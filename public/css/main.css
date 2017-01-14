@@ -23,15 +23,3 @@
 div.hover12:hover input {
     display: block;
 }
-div.hover12 input {
-    position:absolute;
-    display:none;
-}
-div.hover12 input.update {
-    top:0;
-    left:0;
-}
-div.hover12 input.delete {
-    top:0;
-    left:79%;
-}

@@ -5,8 +5,53 @@
   <link rel="shortcut icon" href=""> <!-- favicon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
+  <script src="../js/jquery.js"></script>
+  <script type="text/javascript">
+    var myApp = angular.module("MyApp", []);
+    myApp.controller('MyController', function ($scope) {
+
+
+    });
+    var watchPosID;
+       var geoLoc;
+       function showLocation(position) {
+               var latitude = position.coords.latitude;
+               var longitude = position.coords.longitude;
+               get_add(latitude, longitude);
+       }
+
+       function errorHandler(err) {
+         if(err.code == 1) {
+           alert("Error: Access is denied!");
+         }else if( err.code == 2) {
+           alert("Error: Position is unavailable!");
+         }
+       }
+       function getLoc(){
+
+          if(navigator.geolocation){
+             // timeout at 60000 milliseconds (60 seconds)
+             var options = {enableHighAccuracy:true,maximumAge:30000,timeout:27000};
+             geoLoc = navigator.geolocation;
+             watchPosID = geoLoc.watchPosition(showLocation, errorHandler, options);
+          }else{
+             alert("Sorry, browser does not support geolocation!");
+          }
+       }
+       function get_add(latitude, longitude){
+               $.get("http://maps.google.com/maps/api/geocode/xml?latlng=" + latitude + "," + longitude + "&sensor=false", function(data){
+                       $(data).find("formatted_address").each(function(){
+                               var unitData = $(this).text();
+                               $("#output").html("Latitude : " + latitude + "<br> Longitude: " + longitude + "<br>");
+                               $("#output").append(unitData);
+                               return false;
+                       });
+               });
+       }
+     </script>
+  </script>
 </head>
-<body>
+<body onload="getLoc();">
   <div ng-controller="MainController">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -33,20 +78,42 @@
       <div class="row no-gutters hover12">
         <div class="col-md-6 hover12">
           <figure>
-            <img src="http://warholian.com/wp-content/uploads/2011/11/Screen-shot-2011-11-27-at-10.32.36-PM1-1125x641.png" style="width:100%">
+           <a ng-click="alertSomething()"><img src="http://warholian.com/wp-content/uploads/2011/11/Screen-shot-2011-11-27-at-10.32.36-PM1-1125x641.png" style="width:100%"></a>
           </figure>
-          <figure><img src="http://images.miamiandbeaches.com/images/111166_17957_full.jpg" style="width:100%"></figure>
-          <figure><img src="https://www.marlonrichardson.com/assets/img/blog/jessica-joseph-design-district-0033.jpg" style="width:100%"></figure>
+          <a href="#"><figure><img src="http://images.miamiandbeaches.com/images/111166_17957_full.jpg" style="width:100%"></figure></a>
+          <a href="#"><figure><img src="https://www.marlonrichardson.com/assets/img/blog/jessica-joseph-design-district-0033.jpg" style="width:100%"></figure></a>
         </div>
 
         <div class="col-md-6">
-          <figure><img src="http://www.miamibeach411.com/ee/images/uploads/creativglu_thumb.jpg" style="width:100%"></figure>
-          <figure><img src="http://diegoguevara.com/blog/wp-content/uploads/2011/12/TheeBlog_ArtBaselWynwood.jpg" style="width:100%"></figure>
+          <a href="#"><figure><img src="http://www.miamibeach411.com/ee/images/uploads/creativglu_thumb.jpg" style="width:100%"></figure></a>
+          <a href="#"><figure><img src="http://diegoguevara.com/blog/wp-content/uploads/2011/12/TheeBlog_ArtBaselWynwood.jpg" style="width:100%"></figure></a>
         </div>
+        <div
+        bn-modals
+        ng-show="subview"
+        class="m-modals"
+        ng-switch="subview">
+
+        <!-- BEGIN: Alert Modal. -->
+        <div
+            ng-switch-when="alert"
+            ng-controller="AlertModalController"
+            class="modal">
+
+            <p>
+                {{ message }}
+            </p>
+
+            <p>
+                <a ng-click="close()">Ok, I got it!</a>
+            </p>
+
+        </div>
+        <!-- END: Alert Modal. -->
+      </div>
       </div>
 
-      </div>
-      </div>
+
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
