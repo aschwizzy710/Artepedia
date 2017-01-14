@@ -8,17 +8,43 @@
 </head>
 <body>
   <div ng-controller="MainController">
-      <div class="row fat-row" id="title">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+      </nav>
+      <div class="row" id="title">
         <div class="col-md-12 text-center">
           <h1 style="font-size: 48px;">
             ArtePedia
           </h1>
           <h4>
-            Your Guide To The Modern Art
+            Your Guide To Modern Art
           </h4>
         </div>
       </div>
-      <div class="row fat-row">
+      <div class="row">
+        <div class="col-md-12 text-center">
+           <input type="text" ng-model="art.name" placeholder="Type Art Name">
+           <button ng-click="searchArt(art.name)" class="btn btn-success">Get Art</button>
+        </div>
+      </div>
+      <br>
+      <div class="row no-gutters hover12">
+        <div class="col-md-6 hover12">
+          <figure>
+            <img src="http://warholian.com/wp-content/uploads/2011/11/Screen-shot-2011-11-27-at-10.32.36-PM1-1125x641.png" style="width:100%">
+          </figure>
+          <figure><img src="http://images.miamiandbeaches.com/images/111166_17957_full.jpg" style="width:100%"></figure>
+          <figure><img src="https://www.marlonrichardson.com/assets/img/blog/jessica-joseph-design-district-0033.jpg" style="width:100%"></figure>
+        </div>
+
+        <div class="col-md-6">
+          <figure><img src="http://www.miamibeach411.com/ee/images/uploads/creativglu_thumb.jpg" style="width:100%"></figure>
+          <figure><img src="http://diegoguevara.com/blog/wp-content/uploads/2011/12/TheeBlog_ArtBaselWynwood.jpg" style="width:100%"></figure>
+        </div>
+      </div>
+
       </div>
       </div>
     </div>

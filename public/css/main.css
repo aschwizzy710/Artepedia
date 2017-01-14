@@ -1,0 +1,37 @@
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.hover12 figure {
+	background: #1abc9c;
+}
+.hover12 figure img {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover12 figure:hover img {
+	opacity: .5;
+}
+
+div.hover12:hover input {
+    display: block;
+}
+div.hover12 input {
+    position:absolute;
+    display:none;
+}
+div.hover12 input.update {
+    top:0;
+    left:0;
+}
+div.hover12 input.delete {
+    top:0;
+    left:79%;
+}
