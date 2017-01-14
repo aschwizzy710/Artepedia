@@ -5,12 +5,12 @@
   ModalController.$inject = ['$scope', 'ModalService'];
 
   function ModalController($scope, ModalService){
-    $scope.message = ( modals.params().message || "Whoa!" );
+    $scope.message = ( ModalService.params().message || "Whoa!" );
                 // ---
                 // PUBLIC METHODS.
                 // ---
                 // Wire the modal buttons into modal resolution actions.
-                $scope.close = modals.resolve;
+                $scope.close = ModalService.resolve;
                 // I jump from the current alert-modal to the confirm-modal.
                 $scope.jumpToConfirm = function() {
                     // We could have used the .open() method to jump from one modal
@@ -18,7 +18,7 @@
                     // current modal. By using .proceedTo(), we open the next window, but
                     // defer the resolution of the current modal until the subsequent
                     // modal is resolved or rejected.
-                    modals.proceedTo(
+                    ModalService.proceedTo(
                         "confirm",
                         {
                             message: "I just came from Alert - doesn't that blow your mind?",
@@ -37,14 +37,14 @@
                 };
             }
           }
-          $scope.cancel = modals.reject;
+          $scope.cancel = ModalService.reject;
                 // I process the form submission.
               $scope.submit = function() {
                   // If no input was provided, show the user an error message.
                   if ( ! $scope.form.input ) {
                       return( $scope.errorMessage = "Please provide something!" );
                   }
-                  modals.resolve( $scope.form.input );
+                  ModalService.resolve( $scope.form.input );
               };
             }
         );

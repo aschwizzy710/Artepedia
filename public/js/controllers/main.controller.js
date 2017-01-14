@@ -2,21 +2,21 @@
   angular.module('ArtePedia')
         .controller('MainController', MainController);
 
-  MainController.$inject = ['$scope', 'ArtService', 'modals'];
+  MainController.$inject = ['$scope', 'ArtService', 'ModalService'];
 
-  function MainController($scope, ArtService, modals){
+  function MainController($scope, ArtService, ModalService){
   $scope.artGallery = ArtService.get();
 
   $scope.$watch(function(){
     return ArtService.get();
   }, function(){
-    $scope.artGallery = AlbumService.get();
+    $scope.artGallery = ArtService.get();
   });
 
   $scope.alertSomething = function() {
                       // The .open() method returns a promise that will be either
                       // resolved or rejected when the modal window is closed.
-                      var promise = modals.open(
+                      var promise = ModalService.open(
                           "alert",
                           {
                               message: "I think you are kind of beautiful!"
