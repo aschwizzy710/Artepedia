@@ -1,5 +1,5 @@
 (function() {
-  angular.module('ArtePedia')
+  angular.module('two-cents')
     .controller("NavigationController", NavigationController);
 
   NavigationController.$inject = ['$scope', 'AuthService'];

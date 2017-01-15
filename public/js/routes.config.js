@@ -14,21 +14,21 @@
           }
         })
         .when('/login', {
-          templateUrl: 'html/views/login.html',
+          templateUrl: 'html/login.html',
           controller: "LoginController",
           access: {
             restricted: false
           }
         })
         .when('/signup', {
-          templateUrl: 'html/views/signup.html',
+          templateUrl: 'html/signup.html',
           controller: 'SignUpController',
           access: {
             restricted: false
           }
         })
-        .when('/profile/:username', {
-          templateUrl: 'html/views/profile.html',
+        .when('/profile', {
+          templateUrl: 'html/profile.html',
           controller: 'ProfileController',
           access: {
             restricted: true

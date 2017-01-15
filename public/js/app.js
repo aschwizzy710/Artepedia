@@ -1,5 +1,5 @@
 (function() {
 
-  angular.module('ArtePedia', []);
+  angular.module('ArtePedia', ['ngRoute']);
 
 }());
