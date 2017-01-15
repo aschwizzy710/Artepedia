@@ -13,7 +13,7 @@
       $scope.artGallery = ArtService.get();
     });
 
-  );
+
 };
 
 
