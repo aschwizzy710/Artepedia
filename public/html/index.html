@@ -5,7 +5,10 @@
   <link rel="shortcut icon" href=""> <!-- favicon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
-  <script src="../js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
   <script type="text/javascript">
     var myApp = angular.module("MyApp", []);
     myApp.controller('MyController', function ($scope) {
@@ -53,73 +56,66 @@
 </head>
 <body onload="getLoc();">
   <div ng-controller="MainController">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>
+          <input type="text" ng-model="art.name" placeholder="Type Art Name">
+          <button ng-click="searchArt(art.name)" class="btn btn-success navbar-btn" style="margin">Get Art</button>
+          <button type="button" class="btn btn-default navbar-btn" style="float: right;">Sign Up</button>
+          <button type="button" class="btn btn-default navbar-btn" style="float: right; margin-right: 7px;">Login</button>
         </div>
       </nav>
-      <div class="row" id="title">
+      <div class="row no-gutters" id="title">
         <div class="col-md-12 text-center">
-          <h1 style="font-size: 48px;">
-            ArtePedia
+          <h1 style="font-size: 48px; text-align:center; padding-top: 10px; color: white; font-family: Roboto Slab; letter-spacing: 5px; font-size: 60px;">
+            ArtéPedia
           </h1>
           <h4>
             Your Guide To Modern Art
           </h4>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-           <input type="text" ng-model="art.name" placeholder="Type Art Name">
-           <button ng-click="searchArt(art.name)" class="btn btn-success">Get Art</button>
-        </div>
-      </div>
+
       <br>
       <div class="row no-gutters hover12">
         <div class="col-md-6 hover12">
 
-          <a ng-click="alertSomething()"><figure><img src="http://warholian.com/wp-content/uploads/2011/11/Screen-shot-2011-11-27-at-10.32.36-PM1-1125x641.png" style="width:100%"></figure></a>
-
-          <a href="#"><figure><img src="http://images.miamiandbeaches.com/images/111166_17957_full.jpg" style="width:100%"></figure></a>
-          <a href="#"><figure><img src="https://www.marlonrichardson.com/assets/img/blog/jessica-joseph-design-district-0033.jpg" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="http://warholian.com/wp-content/uploads/2011/11/Screen-shot-2011-11-27-at-10.32.36-PM1-1125x641.png" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="http://images.miamiandbeaches.com/images/111166_17957_full.jpg" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="https://www.marlonrichardson.com/assets/img/blog/jessica-joseph-design-district-0033.jpg" style="width:100%"></figure></a>
         </div>
 
         <div class="col-md-6">
-          <a href="#"><figure><img src="http://www.miamibeach411.com/ee/images/uploads/creativglu_thumb.jpg" style="width:100%"></figure></a>
-          <a href="#"><figure><img src="http://diegoguevara.com/blog/wp-content/uploads/2011/12/TheeBlog_ArtBaselWynwood.jpg" style="width:100%"></figure></a>
-          <a href="#"><figure><img src="https://s-media-cache-ak0.pinimg.com/736x/63/2c/39/632c391f6ac70ecb198a7d7cdf38abaa.jpg" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="http://www.miamibeach411.com/ee/images/uploads/creativglu_thumb.jpg" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="http://diegoguevara.com/blog/wp-content/uploads/2011/12/TheeBlog_ArtBaselWynwood.jpg" style="width:100%"></figure></a>
+          <a href="#" data-toggle="modal" data-target="#myModal"><figure><img src="https://s-media-cache-ak0.pinimg.com/736x/63/2c/39/632c391f6ac70ecb198a7d7cdf38abaa.jpg" style="width:100%; height:499px;"></figure></a>
         </div>
-        <div
-        bn-modals
-        ng-show="subview"
-        class="m-modals"
-        ng-switch="subview">
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
-        <!-- BEGIN: Alert Modal. -->
-        <div
-            ng-switch-when="alert"
-            ng-controller="AlertModalController"
-            class="modal">
-
-            <p>
-                {{ message }}
-            </p>
-
-            <p>
-                <a ng-click="close()">Ok, I got it!</a>
-            </p>
-
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center">Donate To Local Artist</h4>
+          </div>
+          <div class="modal-body text-center">
+             <a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=1PPiP2AoxeH3Ed83wVGpvkd59SQHkvWKFT&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
-        <!-- END: Alert Modal. -->
-      </div>
-      </div>
 
-
+      </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+
   <script src="js/app.js"></script>
   <script src="js/controllers/main.controller.js"></script>
-  <script src="js/services/album.service.js"></script>
+  <script src="js/controllers/modal.controller.js"></script>
+  <script src="js/services/art.service.js"></script>
+  <script src="js/services/modal.service.js"></script>
   </body>
 </html>

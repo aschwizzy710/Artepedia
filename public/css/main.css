@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+
 .row.no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -23,3 +25,19 @@
 div.hover12:hover input {
     display: block;
 }
+
+#title {
+  background-image: url("/skylineMIA.jpg");
+  padding-top: 15px;
+  margin-top: -20px;
+  margin-bottom: -40px;
+}
+
+.navbar-nav {
+    width: 100%;
+    text-align: center;
+    > li {
+      float: none;
+      display: inline-block;
+    }
+  }

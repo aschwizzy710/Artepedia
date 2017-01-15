@@ -5,13 +5,13 @@
   MainController.$inject = ['$scope', 'ArtService', 'ModalService'];
 
   function MainController($scope, ArtService, ModalService){
-  $scope.artGallery = ArtService.get();
-
-  $scope.$watch(function(){
-    return ArtService.get();
-  }, function(){
     $scope.artGallery = ArtService.get();
-  });
+
+    $scope.$watch(function(){
+      return ArtService.get();
+    }, function(){
+      $scope.artGallery = ArtService.get();
+    });
 
   $scope.alertSomething = function() {
                       // The .open() method returns a promise that will be either
@@ -45,5 +45,5 @@
   };
 
 }
-}
-);
+
+}());
