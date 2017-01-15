@@ -19,6 +19,14 @@ server.get('/', function(req, res){
   res.sendFile('public/html/index.html', {root:__dirname});
 });
 
+server.get('/calc', function(req, res){
+  res.sendFile('calc.html', {root: __dirname + '/public/views'});
+});
+
+server.get('/case', function(req, res){
+  res.sendFile('case.html', {root: __dirname + '/public/views'});
+});
+
 server.listen(port, function(){
   console.log('Now listening on port...', port);
 });
